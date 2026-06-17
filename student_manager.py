@@ -63,11 +63,14 @@ class StudentManager:
 
             self.students.remove(student)
 
-            self.save_students()
+            self.save_student()
 
             return True
 
         return False
+
+    def delete_students(self, student_id):
+        return self.delete_student(student_id)
 
     def search_student(self,student_id):
 
@@ -91,7 +94,6 @@ class StudentManager:
             return True
         
         return False
-
 
 
 
