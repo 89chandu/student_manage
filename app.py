@@ -5,7 +5,7 @@ from student import Student
 from student_manager import StudentManager
 
 
-st.title("🎓 Student Management System")
+st.title("🎓 🎓 Student Management System")
 
 manager = StudentManager()
 
