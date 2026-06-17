@@ -45,15 +45,29 @@ class StudentManager:
     def get_student(self):
         return self.students  
     
-    def delete_students(self,student_id):
+    # def delete_students(self,student_id):
 
-        self.students = [
-            student
-            for student in self.students
-            if  student.student_id != student_id
-        ]
+    #     self.students = [
+    #         student
+    #         for student in self.students
+    #         if  student.student_id != student_id
+    #     ]
 
-        self.save_student()
+    #     self.save_student()
+
+    def delete_student(self, student_id):
+
+        student = self.search_student(student_id)
+
+        if student:
+
+            self.students.remove(student)
+
+            self.save_students()
+
+            return True
+
+        return False
 
     def search_student(self,student_id):
 

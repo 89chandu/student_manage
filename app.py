@@ -51,6 +51,7 @@ if menu == "Add Student":
         manager.add_student(student)
 
         st.success("Student Added Successfully") 
+# View Student
 
 elif menu == "View Student":
     st.header("Student List") 
@@ -71,7 +72,86 @@ elif menu == "View Student":
         if data:
             st.dataframe(pd.DataFrame(data))
         else:
-            st.warning("No Students Found")    
+            st.warning("No Students Found")  
+
+# Search Student    
+
+elif menu == "Search Student":
+    st.header("Search Student")  
+
+    student_id = st.text_input("Enter Student ID:")
+
+    if st.button("Search"):
+
+        student = manager.search_student(student_id)
+
+        if student:
+
+            st.success("Student Found")
+
+            st.write("ID:",student.student_id)
+            st.write("Name:",student.name)
+            st.write("Age:",student.age)
+            st.write("Course:",student.course)
+
+        else:
+            st.error("Student Not Found")    
+
+#Update Student
+
+elif menu ==  "Update Student":
+
+    st.header("Update Student")
+
+    student_id = st.text_input("Student ID :")
+
+    student = manager.search_student(student_id)
+
+    if student:
+
+        name = st.text_input(
+            "Name",
+            student.name
+        )
+
+        age = st.number_input(
+            "Age",
+            student.age
+        )
+
+        course = st.text_input(
+            "Course",
+            student.course
+        )
+
+        if st.button("Update"):
+
+            manager.update_student (
+                student_id,
+                name,
+                age,
+                course
+
+            )
+
+            st.success("Student Updated")
+
+
+
+#Delete Student
+
+elif menu == "Delete Student":
+
+    st.header("Delete Student")
+
+    student_id = st.text_input("Student ID")
+
+    if st.button("Delete"):
+        manager.delete_students(student_id)
+        st.success("Student Deleted")
+    else:
+        st.error("not")    
+
 
 
 
